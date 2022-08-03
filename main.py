@@ -12,11 +12,22 @@ class BytesEncoder(json.JSONEncoder):
 
 async def app(scope, receive, send):
     datetime_str = datetime.now(tz=tzinfo).strftime('%Y%m%d%H%M%S')
-    path = f'/data/request-{datetime_str}.json'
-    # path = f'C:\\Code\\home-server\\request-logger\\data\\request-{datetime_str}.json'
+    # path = f'/data/request-{datetime_str}.json'
+    path = f'C:\\Code\\home-server\\request-logger\\data\\request-{datetime_str}.json'
     print(scope)
     with open(path,'w') as json_record:
         json.dump(scope,json_record,indent=4,cls=BytesEncoder)
+    await send({
+        'type': 'http.response.start',
+        'status': 200,
+        'headers': [
+            [b'content-type', b'text/plain'],
+        ]
+    })
+    await send({
+        'type': 'http.response.body',
+        'body': b'Scope received.',
+    })
     return None # ASGI callable should return None
 
 if __name__ == "__main__":
