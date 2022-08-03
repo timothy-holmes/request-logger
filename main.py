@@ -26,7 +26,7 @@ async def app(scope, receive, send):
     })
     await send({
         'type': 'http.response.body',
-        'body': b'Scope received.',
+        'body': (f'Scope received: {datetime_str}').encode('utf-8'),
     })
     return None # ASGI callable should return None
 
