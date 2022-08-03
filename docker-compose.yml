@@ -5,7 +5,7 @@ services:
     build: .
     command: python main.py
     ports:
-      - 81:12345
+      - 8001:12345
     volumes:
       - type: bind
         source: ./data
