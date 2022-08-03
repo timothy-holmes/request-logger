@@ -2,5 +2,7 @@ FROM python:latest
 
 WORKDIR /code
 COPY . ./
-RUN ls -a -R
-RUN pip install -r requirements.txt
+RUN ls -R
+# RUN pip3 install pipreqs
+# RUN pipreqs --force
+RUN pip3 install -r requirements.txt
