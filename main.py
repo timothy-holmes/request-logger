@@ -14,7 +14,7 @@ async def app(scope, receive, send):
 if __name__ == "__main__":
     uvicorn.run(
         "main:app", 
-        host = '192.168.1.103', 
+        # host = '192.168.1.103', 
         port=12345, 
         log_level="info"
     )
