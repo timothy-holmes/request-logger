@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  requestrecord:
+    build: .
+    command: python main.py
+    ports:
+      - 80:12345
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
