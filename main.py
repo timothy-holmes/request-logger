@@ -12,8 +12,8 @@ class BytesEncoder(json.JSONEncoder):
 
 async def app(scope, receive, send):
     datetime_str = datetime.now(tz=tzinfo).strftime('%Y%m%d%H%M%S')
-    # path = f'/data/request-{datetime_str}.json'
-    path = f'C:\\Code\\home-server\\request-logger\\data\\request-{datetime_str}.json'
+    path = f'/data/request-{datetime_str}.json'
+    # path = f'C:\\Code\\home-server\\request-logger\\data\\request-{datetime_str}.json'
     print(scope)
     with open(path,'w') as json_record:
         json.dump(scope,json_record,indent=4,cls=BytesEncoder)
