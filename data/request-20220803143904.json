@@ -1,0 +1,36 @@
+{
+    "type": "http",
+    "asgi": {
+        "version": "3.0",
+        "spec_version": "2.3"
+    },
+    "http_version": "1.1",
+    "server": [
+        "172.28.0.2",
+        12345
+    ],
+    "client": [
+        "192.168.1.199",
+        12936
+    ],
+    "scheme": "http",
+    "method": "GET",
+    "root_path": "",
+    "path": "/",
+    "raw_path": "/",
+    "query_string": "hum=56&temp=19.00&id=shellyht-6BB646",
+    "headers": [
+        [
+            "host",
+            "192.168.1.103:8001"
+        ],
+        [
+            "content-length",
+            "0"
+        ],
+        [
+            "user-agent",
+            "Shelly/20210710-130145/v1.11.0-g12a9327-master (SHHT-1)"
+        ]
+    ]
+}
