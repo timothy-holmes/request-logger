@@ -8,7 +8,7 @@ async def app(scope, receive, send):
     datetime_str = datetime.now(tz=tzinfo).strftime('%Y%m%d%H%M%S')
     path = f'/data/request-{datetime_str}.json'
     with open(path,'w') as json_record:
-        json.dump(json_record,indent=4)
+        json.dump(scope,json_record,indent=4)
     return 'Request received'
 
 if __name__ == "__main__":
