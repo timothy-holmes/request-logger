@@ -4,6 +4,8 @@ services:
   requestrecord:
     build: .
     command: python main.py
+    environment:
+      - HEALTHCHECK_WEBHOOK=http://health.hh.home/ping/6219cf76-51bc-4f1b-b430-69a20ccfc64a
     ports:
       - 192.168.1.103:8001:12345
     volumes:

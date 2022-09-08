@@ -1,8 +1,11 @@
 import uvicorn
-import json
+import os, json
+import requests
 from zoneinfo import ZoneInfo
 from datetime import datetime
 tzinfo = ZoneInfo("Australia/Melbourne")
+
+HEALTHCHECK_WEBHOOK = os.environ['HEALTHCHECK_WEBHOOK']
 
 class BytesEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -11,6 +14,7 @@ class BytesEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 async def app(scope, receive, send):
+    requests.get(HEALTHCHECK_WEBHOOK + '/start')
     datetime_str = datetime.now(tz=tzinfo).strftime('%Y%m%d%H%M%S')
     path = f'/data/request-{datetime_str}.json'
     # path = f'C:\\Code\\home-server\\request-logger\\data\\request-{datetime_str}.json'
@@ -28,6 +32,7 @@ async def app(scope, receive, send):
         'type': 'http.response.body',
         'body': (f'Scope received: {datetime_str}').encode('utf-8'),
     })
+    requests.get(HEALTHCHECK_WEBHOOK)
     return None # ASGI callable should return None
 
 if __name__ == "__main__":
