@@ -1,6 +1,6 @@
 # request-logger
 
-Records requests to server. Opportunity to turn this into middleware for hosted web apps to assist with debugging.
+Records requests to server. Originally used to capture data from Shelly H&T sensor while smart home app on home server was non-functional. It gave me a bit of insight into how uvicorn worked. I might adapt it in the future to assist with debugging my web apps.
 
 ## To use, follow these steps:
 1. Clone to host
